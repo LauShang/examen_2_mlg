@@ -1,0 +1,239 @@
+---
+title: "Parcial 2"
+author: "Lauro Reyes 214532"
+date: "2024-05-01"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r,echo=FALSE,message=FALSE}
+library(dplyr)
+library(cmdstanr)
+library(ggplot2)
+library(bayesplot)
+```
+
+# Ejercicio 1
+
+La siguiente tabla muestra el tamaño de muestra $n_i$ y el tiempo-medio-al-servicio $y_i$ (en segundos) para seis jugadores profesionales de tenis. Supongan que la media de la muestra para el jugador $i$ $y_i$ se distribuye normal con media $\mu_i$ y desviación estándar $\sigma/\sqrt{n_i}$ donde se supone que $sigma$ = 5,5 segundos.
+
+| Jugador | n   | ȳ     |
+|---------|-----|-------|
+| Murray  | 731 | 23.56 |
+| Simon   | 570 | 18.07 |
+| Federer | 491 | 16.21 |
+| Ferrer  | 456 | 21.70 |
+| Isner   | 403 | 22.32 |
+| Kyrgios | 274 | 14.11 |
+
+```{r}
+data <- tibble(
+  jugador = c('Murray', 'Simon', 'Federer', 'Ferrer', 'Isner', 'Kyrgios'),
+  n = c(731, 570, 491, 456, 403, 274),
+  y = c(23.56, 18.07, 16.21, 21.7, 22.31, 14.11)
+)
+```
+
+## 1.a.
+
+Se está interesado en estimar el tiempo-medio-al-servicio de Murray $\mu_1$ usando solo el tiempo al servicio de Murray. Supóngase que la creencia inicial sobre $\mu_1$ se representa por una densidad normal con media 20 y desviación estándar 10. Encontrar la distribución posterior de $\mu_1$ y construir un intervalo de credibilidad de 90 % para $\mu_1$.
+
+```{r, message = FALSE, warning = FALSE}
+model_code <- '
+data {
+  int<lower=0> n_obs;
+  real y_obs;
+}
+
+parameters {
+  real mu;
+  real<lower=0> sigma;
+}
+
+model {
+  // Priors
+  mu ~ normal(20, 10);
+  sigma ~ normal(0, 5.5);
+
+  // Likelihood
+  y_obs ~ normal(mu, sigma / sqrt(n_obs));
+}
+
+'
+stan_model_path <- "models/ejercicio_1_a.stan"
+writeLines(model_code, stan_model_path)
+
+mod <- cmdstan_model(stan_model_path)
+# datos
+murray_data <- data %>% filter(jugador == "Murray")
+
+data_list <- list(
+  n_obs = murray_data$n,
+  y_obs = murray_data$y
+)
+
+fit <- mod$sample(
+  data = data_list,
+  seed = 4,
+  chains = 4,
+)
+
+mcmc_combo(fit$draws(), pars = c("mu"))
+
+# intervalo
+mu_samples <- fit$draws(variables = "mu")
+mu_ci <- quantile(mu_samples, probs = c(0.05, 0.95))
+print("Intervalo del 90% para \u03BC")
+print(mu_ci)
+
+```
+
+## 1.b
+
+Suponer ahora que se cree que no hay diferencias entre los tiempos-medios-al servicio y $\mu_1$ = ... = $\mu_6$ = $\mu$. El tiempo-medio-al-servicio global es $\bar{y}$ = 19,9 con un tamaño de muestra combinado de $n = 2925$. Suponiendo que $\mu$ tiene una distribución inicial $N(20,10)$, encontrar la posterior de $\mu$ y construir un intervalo de credibilidad de 90 % para $\mu$.
+
+```{r}
+model_code <- "
+data {
+  real y_obs;
+  int<lower=0> n_obs;
+}
+
+parameters {
+  real mu;
+  real<lower=0> sigma;
+}
+
+model {
+  // Priors
+  mu ~ normal(20, 10);
+  sigma ~ normal(0, 5.5);
+
+  // Likelihood
+  y_obs ~ normal(mu, sigma / sqrt(n_obs));
+}
+"
+stan_model_path <- "models/ejercicio_1_b.stan"
+writeLines(model_code, stan_model_path)
+
+mod <- cmdstan_model(stan_model_path)
+
+# data
+y_obs_all <- sum(data$y * data$n) / sum(data$n)
+n_obs_all <- sum(data$n)
+
+# Data list for Stan
+data_list <- list(
+  y_obs = y_obs_all,
+  n_obs = n_obs_all
+)
+
+# Sampling
+fit <- mod$sample(
+  data = data_list,
+  seed = 42,
+  chains = 4)
+
+print(fit$summary())
+mcmc_combo(fit$draws(), pars = c("mu"))
+# intervalo
+mu_samples <- fit$draws(variables = "mu")
+mu_ci <- quantile(mu_samples, probs = c(0.05, 0.95))
+print("Intervalo del 90% para \u03BC")
+print(mu_ci)
+```
+
+## 1.c
+
+¿Qué enfoque, parte (a) o parte (b), parece más razonable en esta situación?
+
+**Depende de lo que necesites saber. Si quieres el tiempo promedio de todos buscando generalizar, usa el promedio total. Si te interesa el tiempo de un jugador específico, mira solo sus datos**
+
+# Ejercicio 2
+
+Continuando con el problema anterior, suponer que se quiere estimar el tiempo- medio-al servicio para los seis tenistas siguiendo un modelo jerárquico. Recordar que se supone $\sigma = 5,5$ segundos.
+
+$\bar{y}_i \sim N(\mu_i,\sigma/\sqrt{n_i}), \quad i = 1,...,6$
+
+$\mu_i \sim N(\mu,\tau), \quad i = 1,...,6$
+
+$\mu \sim N(20,1/0.0001),$
+
+$1/\tau^2 \sim G(0.01,0.1)$
+
+## 2.a 
+Usar JAGS o Stan para simular una muestra de tamaño 1000 de la distribución posterior del modelo jerárquico.
+
+```{r}
+library(cmdstanr)
+
+# Stan model code as a string
+model_code <- "
+data {
+  int<lower=1> N;
+  vector[N] y;
+  vector<lower=0>[N] n_obs;
+
+  // Hyperparameters
+  real mu_mu;
+  real<lower=0> tau_alpha;
+  real<lower=0> tau_beta;
+}
+
+parameters {
+  real general_mu;
+  real<lower=0> inv_squared_tau;
+  vector[N] mu;
+
+  // Model parameters
+  real<lower=0> sigma;
+}
+
+transformed parameters {
+  real<lower=0> tau = 1 / sqrt(inv_squared_tau);
+}
+
+model {
+  general_mu ~ normal(mu_mu, 0.01);
+  inv_squared_tau ~ gamma(tau_alpha, tau_beta);
+  mu ~ normal(general_mu, tau);
+  y ~ normal(mu, sigma ./ sqrt(n_obs));
+}
+
+generated quantities {
+  vector[N] y_pred;
+  for (i in 1:N) {
+    y_pred[i] = normal_rng(mu[i], sigma / sqrt(n_obs[i]));
+  }
+}
+"
+stan_model_path <- "models/ejercicio_2_a.stan"
+writeLines(model_code, stan_model_path)
+
+mod <- cmdstan_model(stan_model_path)
+
+# data
+data_list <- list(
+  N = nrow(data),
+  y = data$y,
+  n_obs = data$n,
+  mu_mu = 20,
+  tau_alpha = 0.01,
+  tau_beta = 0.1
+)
+
+# Sampling
+fit <- mod$sample(
+  data = data_list,
+  seed = 42,
+  chains = 4,
+  parallel_chains = 4,
+  iter_sampling = 1000,
+  iter_warmup = 1000
+)
+
+# Print the summary of the model fit
+print(fit$summary())
+mcmc_combo(fit$draws(), pars = c("general_mu","inv_squared_tau"))
+```
