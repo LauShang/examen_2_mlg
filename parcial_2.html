@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lauro Reyes 214532">
+<meta name="dcterms.date" content="2024-05-01">
+
+<title>Parcial 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="parcial_2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="parcial_2_files/libs/quarto-html/quarto.js"></script>
+<script src="parcial_2_files/libs/quarto-html/popper.min.js"></script>
+<script src="parcial_2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="parcial_2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="parcial_2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="parcial_2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="parcial_2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="parcial_2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="parcial_2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Parcial 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lauro Reyes 214532 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ejercicio-1" class="level1">
+<h1>Ejercicio 1</h1>
+<p>La siguiente tabla muestra el tamaño de muestra <span class="math inline">\(n_i\)</span> y el tiempo-medio-al-servicio <span class="math inline">\(y_i\)</span> (en segundos) para seis jugadores profesionales de tenis. Supongan que la media de la muestra para el jugador <span class="math inline">\(i\)</span> <span class="math inline">\(y_i\)</span> se distribuye normal con media <span class="math inline">\(\mu_i\)</span> y desviación estándar <span class="math inline">\(\sigma/\sqrt{n_i}\)</span> donde se supone que <span class="math inline">\(\sigma\)</span> = 5,5 segundos.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Jugador</th>
+<th>n</th>
+<th>ȳ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Murray</td>
+<td>731</td>
+<td>23.56</td>
+</tr>
+<tr class="even">
+<td>Simon</td>
+<td>570</td>
+<td>18.07</td>
+</tr>
+<tr class="odd">
+<td>Federer</td>
+<td>491</td>
+<td>16.21</td>
+</tr>
+<tr class="even">
+<td>Ferrer</td>
+<td>456</td>
+<td>21.70</td>
+</tr>
+<tr class="odd">
+<td>Isner</td>
+<td>403</td>
+<td>22.32</td>
+</tr>
+<tr class="even">
+<td>Kyrgios</td>
+<td>274</td>
+<td>14.11</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">jugador =</span> <span class="fu">c</span>(<span class="st">'Murray'</span>, <span class="st">'Simon'</span>, <span class="st">'Federer'</span>, <span class="st">'Ferrer'</span>, <span class="st">'Isner'</span>, <span class="st">'Kyrgios'</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">731</span>, <span class="dv">570</span>, <span class="dv">491</span>, <span class="dv">456</span>, <span class="dv">403</span>, <span class="dv">274</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">23.56</span>, <span class="fl">18.07</span>, <span class="fl">16.21</span>, <span class="fl">21.7</span>, <span class="fl">22.31</span>, <span class="fl">14.11</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>calcular_intervalo <span class="ot">&lt;-</span> <span class="cf">function</span>(samples) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the list of variable names</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  var_names <span class="ot">&lt;-</span> <span class="fu">dimnames</span>(samples)<span class="sc">$</span>variable</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ci_width_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> var_names) {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    param_samples <span class="ot">&lt;-</span> <span class="fu">as.array</span>(samples[, , var])</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    param_samples_vector <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(param_samples)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    ci_bounds <span class="ot">&lt;-</span> <span class="fu">quantile</span>(param_samples_vector, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ci_width <span class="ot">&lt;-</span> ci_bounds[<span class="dv">2</span>] <span class="sc">-</span> ci_bounds[<span class="dv">1</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    ci_width_list[[var]] <span class="ot">&lt;-</span> ci_width</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ci_width_list)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a." class="level2">
+<h2 class="anchored" data-anchor-id="a.">1.a.</h2>
+<p>Se está interesado en estimar el tiempo-medio-al-servicio de Murray <span class="math inline">\(\mu_1\)</span> usando solo el tiempo al servicio de Murray. Supóngase que la creencia inicial sobre <span class="math inline">\(\mu_1\)</span> se representa por una densidad normal con media 20 y desviación estándar 10. Encontrar la distribución posterior de <span class="math inline">\(\mu_1\)</span> y construir un intervalo de credibilidad de 90 % para <span class="math inline">\(\mu_1\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; n_obs;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">  real y_obs;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">  // Priors</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(20, 10);</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">  sigma ~ normal(0, 5.5);</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">  // Likelihood</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">  y_obs ~ normal(mu, sigma / sqrt(n_obs));</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>stan_model_path <span class="ot">&lt;-</span> <span class="st">"models/ejercicio_1_a.stan"</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_code, stan_model_path)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(stan_model_path)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># datos</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>murray_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(jugador <span class="sc">==</span> <span class="st">"Murray"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_obs =</span> murray_data<span class="sc">$</span>n,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_obs =</span> murray_data<span class="sc">$</span>y</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_list,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">4</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 sequential chains...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 0.0 seconds.
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 finished in 0.0 seconds.
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 0.0 seconds.
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 0.0 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 0.0 seconds.
+Total execution time: 0.5 seconds.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_combo</span>(fit<span class="sc">$</span><span class="fu">draws</span>(), <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"mu"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intervalo</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mu_samples <span class="ot">&lt;-</span> fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="st">"mu"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mu_ci_murray <span class="ot">&lt;-</span> <span class="fu">calcular_intervalo</span>(mu_samples)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Intervalo del 90% para \u03BC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Intervalo del 90% para μ"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mu_ci_murray)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$mu
+     95% 
+0.635045 </code></pre>
+</div>
+</div>
+</section>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">1.b</h2>
+<p>Suponer ahora que se cree que no hay diferencias entre los tiempos-medios-al servicio y <span class="math inline">\(\mu_1\)</span> = … = <span class="math inline">\(\mu_6\)</span> = <span class="math inline">\(\mu\)</span>. El tiempo-medio-al-servicio global es <span class="math inline">\(\bar{y}\)</span> = 19,9 con un tamaño de muestra combinado de <span class="math inline">\(n = 2925\)</span>. Suponiendo que <span class="math inline">\(\mu\)</span> tiene una distribución inicial <span class="math inline">\(N(20,10)\)</span>, encontrar la posterior de <span class="math inline">\(\mu\)</span> y construir un intervalo de credibilidad de 90 % para <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_code <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">  real y_obs;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; n_obs;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">  // Priors</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(20, 10);</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">  sigma ~ normal(0, 5.5);</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="st">  // Likelihood</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="st">  y_obs ~ normal(mu, sigma / sqrt(n_obs));</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>stan_model_path <span class="ot">&lt;-</span> <span class="st">"models/ejercicio_1_b.stan"</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_code, stan_model_path)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(stan_model_path)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>y_obs_all <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>y <span class="sc">*</span> data<span class="sc">$</span>n) <span class="sc">/</span> <span class="fu">sum</span>(data<span class="sc">$</span>n)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>n_obs_all <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>n)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Data list for Stan</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_obs =</span> y_obs_all,</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_obs =</span> n_obs_all</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_list,</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">42</span>,</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 sequential chains...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 0.0 seconds.
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 finished in 0.0 seconds.
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 0.0 seconds.
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 0.0 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 0.0 seconds.
+Total execution time: 0.5 seconds.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 223 of 4000 (6.0%) transitions ended with a divergence.
+See https://mc-stan.org/misc/warnings for details.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit<span class="sc">$</span><span class="fu">summary</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 10
+  variable  mean median    sd    mad     q5   q95  rhat ess_bulk ess_tail
+  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 lp__      2.95   3.26 1.00  0.724   0.919  3.92  1.02     393.     430.
+2 mu       19.9   19.9  0.109 0.0611 19.7   20.1   1.03    1058.     699.
+3 sigma     4.65   4.00 3.23  3.28    0.789 10.8   1.04     203.     127.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_combo</span>(fit<span class="sc">$</span><span class="fu">draws</span>(), <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"mu"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intervalo</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mu_samples <span class="ot">&lt;-</span> fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="st">"mu"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mu_ci <span class="ot">&lt;-</span> <span class="fu">calcular_intervalo</span>(mu_samples)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Intervalo del 90% para \u03BC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Intervalo del 90% para μ"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mu_ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$mu
+     95% 
+0.359055 </code></pre>
+</div>
+</div>
+</section>
+<section id="c" class="level2">
+<h2 class="anchored" data-anchor-id="c">1.c</h2>
+<p>¿Qué enfoque, parte (a) o parte (b), parece más razonable en esta situación?</p>
+<p><strong>Depende de lo que necesites saber. Si quieres el tiempo promedio de todos buscando generalizar, usa el promedio total. Si te interesa el tiempo de un jugador específico, mira solo sus datos</strong></p>
+</section>
+</section>
+<section id="ejercicio-2" class="level1">
+<h1>Ejercicio 2</h1>
+<p>Continuando con el problema anterior, suponer que se quiere estimar el tiempo- medio-al servicio para los seis tenistas siguiendo un modelo jerárquico. Recordar que se supone <span class="math inline">\(\sigma = 5,5\)</span> segundos.</p>
+<p><span class="math inline">\(\bar{y}_i \sim N(\mu_i,\sigma/\sqrt{n_i}), \quad i = 1,...,6\)</span></p>
+<p><span class="math inline">\(\mu_i \sim N(\mu,\tau), \quad i = 1,...,6\)</span></p>
+<p><span class="math inline">\(\mu \sim N(20,1/0.0001),\)</span></p>
+<p><span class="math inline">\(1/\tau^2 \sim G(0.01,0.1)\)</span></p>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">2.a</h2>
+<p>Usar JAGS o Stan para simular una muestra de tamaño 1000 de la distribución posterior del modelo jerárquico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model_code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;          </span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] y;             </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="st">  vector&lt;lower=0&gt;[N] n;    </span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;                 </span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; inv_tau_squared;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] mu_i;          </span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;     </span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="st">transformed parameters {</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; tau = sqrt(1 / inv_tau_squared);</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="st">  // Priors</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(20, 10);</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="st">  inv_tau_squared ~ gamma(0.01, 0.1);</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="st">  sigma ~ normal(0, 5.5);</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="st">  mu_i ~ normal(mu, tau);</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="st">  // Likelihood</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ normal(mu_i, sigma ./ sqrt(n));</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>stan_model_path <span class="ot">&lt;-</span> <span class="st">"models/ejercicio_2_a.stan"</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_code, stan_model_path)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(stan_model_path)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">nrow</span>(data),</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> data<span class="sc">$</span>y,</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> data<span class="sc">$</span>n</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_list,</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">4</span>,</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 sequential chains...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 0.1 seconds.
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a706c2d9ca.stan', line 22, column 2 to column 37)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chain 2 finished in 0.1 seconds.
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 0.1 seconds.
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 0.1 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 0.1 seconds.
+Total execution time: 0.5 seconds.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 26 of 4000 (1.0%) transitions ended with a divergence.
+See https://mc-stan.org/misc/warnings for details.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 1 of 4 chains had an E-BFMI less than 0.3.
+See https://mc-stan.org/misc/warnings for details.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span><span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 10
+   variable           mean  median     sd    mad       q5    q95  rhat ess_bulk
+   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1 lp__            -2.82   -3.17   5.08   4.82   -10.8     6.41   1.07     54.6
+ 2 mu              19.3    19.3    1.79   1.58    16.5    22.3    1.00   1370. 
+ 3 inv_tau_squared  0.0730  0.0655 0.0449 0.0400   0.0156  0.159  1.01   1530. 
+ 4 mu_i[1]         23.5    23.6    0.202  0.121   23.2    23.8    1.02   4705. 
+ 5 mu_i[2]         18.1    18.1    0.228  0.141   17.7    18.5    1.02   4918. 
+ 6 mu_i[3]         16.2    16.2    0.251  0.146   15.8    16.6    1.04   3558. 
+ 7 mu_i[4]         21.7    21.7    0.262  0.157   21.3    22.1    1.02   4023. 
+ 8 mu_i[5]         22.3    22.3    0.276  0.164   21.9    22.7    1.02   4072. 
+ 9 mu_i[6]         14.1    14.1    0.336  0.201   13.6    14.7    1.02   4580. 
+10 sigma            4.59    3.96   3.17   3.02     0.688  10.7    1.06     53.7
+11 tau              4.38    3.91   1.78   1.21     2.51    8.01   1.01   1530. 
+# ℹ 1 more variable: ess_tail &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_combo</span>(fit<span class="sc">$</span><span class="fu">draws</span>(), <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"mu"</span>,<span class="st">"tau"</span>,<span class="st">"mu_i[1]"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="b-1" class="level2">
+<h2 class="anchored" data-anchor-id="b-1">2.b</h2>
+<p>Construir un intervalo de credibilidad para cada una de las medias</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intervalo</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>mu_samples <span class="ot">&lt;-</span> fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"mu"</span>,<span class="st">"mu_i[1]"</span>,<span class="st">"mu_i[2]"</span>,<span class="st">"mu_i[3]"</span>,<span class="st">"mu_i[4]"</span>,<span class="st">"mu_i[5]"</span>,<span class="st">"mu_i[6]"</span>))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>mu_ci <span class="ot">&lt;-</span> <span class="fu">calcular_intervalo</span>(mu_samples)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mu_ci) <span class="co"># intervalo del 90%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$mu
+    95% 
+5.86079 
+
+$`mu_i[1]`
+     95% 
+0.622585 
+
+$`mu_i[2]`
+    95% 
+0.74005 
+
+$`mu_i[3]`
+     95% 
+0.792935 
+
+$`mu_i[4]`
+   95% 
+0.8383 
+
+$`mu_i[5]`
+     95% 
+0.856525 
+
+$`mu_i[6]`
+    95% 
+1.06437 </code></pre>
+</div>
+</div>
+</section>
+<section id="c-1" class="level2">
+<h2 class="anchored" data-anchor-id="c-1">2.c</h2>
+<p>Comparar los intervalos de credibilidad para Murray con los intervalos obtenidos en el ejercicio 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"Intervalo de confianza Murray (1): %.4f"</span>,mu_ci_murray)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Intervalo de confianza Murray (1): 0.6350"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"Intervalo de confianza Murray (2) [jerárquico]: %.4f"</span>,mu_ci<span class="sc">$</span><span class="st">`</span><span class="at">mu_i[1]</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Intervalo de confianza Murray (2) [jerárquico]: 0.6226"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="section" class="level1">
+<h1>3</h1>
+<p>Resolver el siguiente ejercicio. Pueden usar JAGS o Stan</p>
+<p>Table 10.7 displays the number of fire calls and the number of building fires for ten counties in Montgomery County, Pennsylvania from 2015 through 2019. This data is currently described as Emergency - 911 Calls” from kaggle.com. Suppose that the number of building fires for the <span class="math inline">\(j-th\)</span> zip code is Poisson with mean <span class="math inline">\(n_j \lambda_j\)</span> where <span class="math inline">\(n_j\)</span> and <span class="math inline">\(\lambda_j\)</span> are respectively the number of fire calls and rate of building fires for the <span class="math inline">\(j-th\)</span> zip code.</p>
+<p>Table 10.7. The number of fire calls and building fires for ten zip codes in Montgomery County, Pennsylvania.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Zip Code</th>
+<th>Fire Calls</th>
+<th>̄Building Fire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18054</td>
+<td>266</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>18103</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>19010</td>
+<td>1470</td>
+<td>59</td>
+</tr>
+<tr class="even">
+<td>19025</td>
+<td>246</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>19040</td>
+<td>1093</td>
+<td>47</td>
+</tr>
+<tr class="even">
+<td>19066</td>
+<td>435</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td>19116</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>19406</td>
+<td>2092</td>
+<td>113</td>
+</tr>
+<tr class="odd">
+<td>19428</td>
+<td>2025</td>
+<td>73</td>
+</tr>
+<tr class="even">
+<td>19474</td>
+<td>4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>fire_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">zip_code =</span> <span class="fu">c</span>(<span class="dv">18054</span>, <span class="dv">18103</span>, <span class="dv">19010</span>, <span class="dv">19025</span>, <span class="dv">19040</span>, <span class="dv">19066</span>, <span class="dv">19116</span>, <span class="dv">19406</span>, <span class="dv">19428</span>, <span class="dv">19474</span>),</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fire_calls =</span> <span class="fu">c</span>(<span class="dv">266</span>, <span class="dv">1</span>, <span class="dv">1470</span>, <span class="dv">246</span>, <span class="dv">1093</span>, <span class="dv">435</span>, <span class="dv">2</span>, <span class="dv">2092</span>, <span class="dv">2025</span>, <span class="dv">4</span>),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">building_fire =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">59</span>, <span class="dv">11</span>, <span class="dv">47</span>, <span class="dv">26</span>, <span class="dv">0</span>, <span class="dv">113</span>, <span class="dv">73</span>, <span class="dv">1</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># rates</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>fire_data <span class="ot">&lt;-</span> fire_data <span class="sc">%&gt;%</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rate =</span> <span class="fu">if_else</span>(building_fire <span class="sc">&gt;</span> <span class="dv">0</span>, fire_calls <span class="sc">/</span> building_fire, <span class="fl">0.001</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a-1" class="level2">
+<h2 class="anchored" data-anchor-id="a-1">3.a</h2>
+<p>Suppose that the building fire rates <span class="math inline">\(\lambda_1,\dots,\lambda_{10}\)</span> follow a common <span class="math inline">\(Gamma(\alpha, \beta)\)</span> distribution where the hyperparameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> follow weakly informative distributions. Use JAGS to simulate a sample of size 5000 from the joint posterior distribution of all parameters of the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model_code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;  </span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="st">  vector&lt;lower=0&gt;[N] fire_calls;  </span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="st">  array[N] int&lt;lower=0&gt; building_fires;  </span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; alpha;  </span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; beta;  </span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="st">  vector&lt;lower=0&gt;[N] lambda;  </span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="st">transformed parameters {</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="st">  real building_fire_rate = alpha / beta;  </span></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="st">  // Weakly informative priors for hyperparameters</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="st">  alpha ~ normal(0, 10);</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="st">  beta ~ normal(0, 10);</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="st">  lambda ~ gamma(alpha, beta);</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="st">  // Likelihood</span></span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="st">  for (i in 1:N) {</span></span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="st">    building_fires[i] ~ poisson(lambda[i] * fire_calls[i]);</span></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>stan_model_path <span class="ot">&lt;-</span> <span class="st">"models/ejercicio_3_a.stan"</span></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_code, stan_model_path)</span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(stan_model_path)</span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data list as per your dataset</span></span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">nrow</span>(fire_data),</span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">fire_calls =</span> fire_data<span class="sc">$</span>fire_calls,</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">building_fires =</span> fire_data<span class="sc">$</span>building_fire</span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling</span></span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_list,</span>
+<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb39-50"><a href="#cb39-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">5000</span>,</span>
+<span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">1000</span></span>
+<span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 sequential chains...
+
+Chain 1 Iteration:    1 / 6000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 6000 [  1%]  (Warmup) 
+Chain 1 Iteration:  200 / 6000 [  3%]  (Warmup) 
+Chain 1 Iteration:  300 / 6000 [  5%]  (Warmup) 
+Chain 1 Iteration:  400 / 6000 [  6%]  (Warmup) 
+Chain 1 Iteration:  500 / 6000 [  8%]  (Warmup) 
+Chain 1 Iteration:  600 / 6000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  700 / 6000 [ 11%]  (Warmup) 
+Chain 1 Iteration:  800 / 6000 [ 13%]  (Warmup) 
+Chain 1 Iteration:  900 / 6000 [ 15%]  (Warmup) 
+Chain 1 Iteration: 1000 / 6000 [ 16%]  (Warmup) 
+Chain 1 Iteration: 1001 / 6000 [ 16%]  (Sampling) 
+Chain 1 Iteration: 1100 / 6000 [ 18%]  (Sampling) 
+Chain 1 Iteration: 1200 / 6000 [ 20%]  (Sampling) 
+Chain 1 Iteration: 1300 / 6000 [ 21%]  (Sampling) 
+Chain 1 Iteration: 1400 / 6000 [ 23%]  (Sampling) 
+Chain 1 Iteration: 1500 / 6000 [ 25%]  (Sampling) 
+Chain 1 Iteration: 1600 / 6000 [ 26%]  (Sampling) 
+Chain 1 Iteration: 1700 / 6000 [ 28%]  (Sampling) 
+Chain 1 Iteration: 1800 / 6000 [ 30%]  (Sampling) 
+Chain 1 Iteration: 1900 / 6000 [ 31%]  (Sampling) 
+Chain 1 Iteration: 2000 / 6000 [ 33%]  (Sampling) 
+Chain 1 Iteration: 2100 / 6000 [ 35%]  (Sampling) 
+Chain 1 Iteration: 2200 / 6000 [ 36%]  (Sampling) 
+Chain 1 Iteration: 2300 / 6000 [ 38%]  (Sampling) 
+Chain 1 Iteration: 2400 / 6000 [ 40%]  (Sampling) 
+Chain 1 Iteration: 2500 / 6000 [ 41%]  (Sampling) 
+Chain 1 Iteration: 2600 / 6000 [ 43%]  (Sampling) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: gamma_lpdf: Random variable[9] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: gamma_lpdf: Random variable[1] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chain 1 Iteration: 2700 / 6000 [ 45%]  (Sampling) 
+Chain 1 Iteration: 2800 / 6000 [ 46%]  (Sampling) 
+Chain 1 Iteration: 2900 / 6000 [ 48%]  (Sampling) 
+Chain 1 Iteration: 3000 / 6000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 3100 / 6000 [ 51%]  (Sampling) 
+Chain 1 Iteration: 3200 / 6000 [ 53%]  (Sampling) 
+Chain 1 Iteration: 3300 / 6000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 3400 / 6000 [ 56%]  (Sampling) 
+Chain 1 Iteration: 3500 / 6000 [ 58%]  (Sampling) 
+Chain 1 Iteration: 3600 / 6000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 3700 / 6000 [ 61%]  (Sampling) 
+Chain 1 Iteration: 3800 / 6000 [ 63%]  (Sampling) 
+Chain 1 Iteration: 3900 / 6000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 4000 / 6000 [ 66%]  (Sampling) 
+Chain 1 Iteration: 4100 / 6000 [ 68%]  (Sampling) 
+Chain 1 Iteration: 4200 / 6000 [ 70%]  (Sampling) 
+Chain 1 Iteration: 4300 / 6000 [ 71%]  (Sampling) 
+Chain 1 Iteration: 4400 / 6000 [ 73%]  (Sampling) 
+Chain 1 Iteration: 4500 / 6000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 4600 / 6000 [ 76%]  (Sampling) 
+Chain 1 Iteration: 4700 / 6000 [ 78%]  (Sampling) 
+Chain 1 Iteration: 4800 / 6000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 4900 / 6000 [ 81%]  (Sampling) 
+Chain 1 Iteration: 5000 / 6000 [ 83%]  (Sampling) 
+Chain 1 Iteration: 5100 / 6000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 5200 / 6000 [ 86%]  (Sampling) 
+Chain 1 Iteration: 5300 / 6000 [ 88%]  (Sampling) 
+Chain 1 Iteration: 5400 / 6000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 5500 / 6000 [ 91%]  (Sampling) 
+Chain 1 Iteration: 5600 / 6000 [ 93%]  (Sampling) 
+Chain 1 Iteration: 5700 / 6000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 5800 / 6000 [ 96%]  (Sampling) 
+Chain 1 Iteration: 5900 / 6000 [ 98%]  (Sampling) 
+Chain 1 Iteration: 6000 / 6000 [100%]  (Sampling) 
+Chain 1 finished in 0.1 seconds.
+Chain 2 Iteration:    1 / 6000 [  0%]  (Warmup) 
+Chain 2 Iteration:  100 / 6000 [  1%]  (Warmup) 
+Chain 2 Iteration:  200 / 6000 [  3%]  (Warmup) 
+Chain 2 Iteration:  300 / 6000 [  5%]  (Warmup) 
+Chain 2 Iteration:  400 / 6000 [  6%]  (Warmup) 
+Chain 2 Iteration:  500 / 6000 [  8%]  (Warmup) 
+Chain 2 Iteration:  600 / 6000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  700 / 6000 [ 11%]  (Warmup) 
+Chain 2 Iteration:  800 / 6000 [ 13%]  (Warmup) 
+Chain 2 Iteration:  900 / 6000 [ 15%]  (Warmup) 
+Chain 2 Iteration: 1000 / 6000 [ 16%]  (Warmup) 
+Chain 2 Iteration: 1001 / 6000 [ 16%]  (Sampling) 
+Chain 2 Iteration: 1100 / 6000 [ 18%]  (Sampling) 
+Chain 2 Iteration: 1200 / 6000 [ 20%]  (Sampling) 
+Chain 2 Iteration: 1300 / 6000 [ 21%]  (Sampling) 
+Chain 2 Iteration: 1400 / 6000 [ 23%]  (Sampling) 
+Chain 2 Iteration: 1500 / 6000 [ 25%]  (Sampling) 
+Chain 2 Iteration: 1600 / 6000 [ 26%]  (Sampling) 
+Chain 2 Iteration: 1700 / 6000 [ 28%]  (Sampling) 
+Chain 2 Iteration: 1800 / 6000 [ 30%]  (Sampling) 
+Chain 2 Iteration: 1900 / 6000 [ 31%]  (Sampling) 
+Chain 2 Iteration: 2000 / 6000 [ 33%]  (Sampling) 
+Chain 2 Iteration: 2100 / 6000 [ 35%]  (Sampling) 
+Chain 2 Iteration: 2200 / 6000 [ 36%]  (Sampling) 
+Chain 2 Iteration: 2300 / 6000 [ 38%]  (Sampling) 
+Chain 2 Iteration: 2400 / 6000 [ 40%]  (Sampling) 
+Chain 2 Iteration: 2500 / 6000 [ 41%]  (Sampling) 
+Chain 2 Iteration: 2600 / 6000 [ 43%]  (Sampling) 
+Chain 2 Iteration: 2700 / 6000 [ 45%]  (Sampling) 
+Chain 2 Iteration: 2800 / 6000 [ 46%]  (Sampling) 
+Chain 2 Iteration: 2900 / 6000 [ 48%]  (Sampling) 
+Chain 2 Iteration: 3000 / 6000 [ 50%]  (Sampling) 
+Chain 2 Iteration: 3100 / 6000 [ 51%]  (Sampling) 
+Chain 2 Iteration: 3200 / 6000 [ 53%]  (Sampling) 
+Chain 2 Iteration: 3300 / 6000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 3400 / 6000 [ 56%]  (Sampling) 
+Chain 2 Iteration: 3500 / 6000 [ 58%]  (Sampling) 
+Chain 2 Iteration: 3600 / 6000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 3700 / 6000 [ 61%]  (Sampling) 
+Chain 2 Iteration: 3800 / 6000 [ 63%]  (Sampling) 
+Chain 2 Iteration: 3900 / 6000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 4000 / 6000 [ 66%]  (Sampling) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable[3] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable[3] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable[5] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable[1] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: gamma_lpdf: Random variable[3] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chain 2 Iteration: 4100 / 6000 [ 68%]  (Sampling) 
+Chain 2 Iteration: 4200 / 6000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 4300 / 6000 [ 71%]  (Sampling) 
+Chain 2 Iteration: 4400 / 6000 [ 73%]  (Sampling) 
+Chain 2 Iteration: 4500 / 6000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 4600 / 6000 [ 76%]  (Sampling) 
+Chain 2 Iteration: 4700 / 6000 [ 78%]  (Sampling) 
+Chain 2 Iteration: 4800 / 6000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 4900 / 6000 [ 81%]  (Sampling) 
+Chain 2 Iteration: 5000 / 6000 [ 83%]  (Sampling) 
+Chain 2 Iteration: 5100 / 6000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 5200 / 6000 [ 86%]  (Sampling) 
+Chain 2 Iteration: 5300 / 6000 [ 88%]  (Sampling) 
+Chain 2 Iteration: 5400 / 6000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 5500 / 6000 [ 91%]  (Sampling) 
+Chain 2 Iteration: 5600 / 6000 [ 93%]  (Sampling) 
+Chain 2 Iteration: 5700 / 6000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 5800 / 6000 [ 96%]  (Sampling) 
+Chain 2 Iteration: 5900 / 6000 [ 98%]  (Sampling) 
+Chain 2 Iteration: 6000 / 6000 [100%]  (Sampling) 
+Chain 2 finished in 0.1 seconds.
+Chain 3 Iteration:    1 / 6000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 6000 [  1%]  (Warmup) 
+Chain 3 Iteration:  200 / 6000 [  3%]  (Warmup) 
+Chain 3 Iteration:  300 / 6000 [  5%]  (Warmup) 
+Chain 3 Iteration:  400 / 6000 [  6%]  (Warmup) 
+Chain 3 Iteration:  500 / 6000 [  8%]  (Warmup) 
+Chain 3 Iteration:  600 / 6000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  700 / 6000 [ 11%]  (Warmup) 
+Chain 3 Iteration:  800 / 6000 [ 13%]  (Warmup) 
+Chain 3 Iteration:  900 / 6000 [ 15%]  (Warmup) 
+Chain 3 Iteration: 1000 / 6000 [ 16%]  (Warmup) 
+Chain 3 Iteration: 1001 / 6000 [ 16%]  (Sampling) 
+Chain 3 Iteration: 1100 / 6000 [ 18%]  (Sampling) 
+Chain 3 Iteration: 1200 / 6000 [ 20%]  (Sampling) 
+Chain 3 Iteration: 1300 / 6000 [ 21%]  (Sampling) 
+Chain 3 Iteration: 1400 / 6000 [ 23%]  (Sampling) 
+Chain 3 Iteration: 1500 / 6000 [ 25%]  (Sampling) 
+Chain 3 Iteration: 1600 / 6000 [ 26%]  (Sampling) 
+Chain 3 Iteration: 1700 / 6000 [ 28%]  (Sampling) 
+Chain 3 Iteration: 1800 / 6000 [ 30%]  (Sampling) 
+Chain 3 Iteration: 1900 / 6000 [ 31%]  (Sampling) 
+Chain 3 Iteration: 2000 / 6000 [ 33%]  (Sampling) 
+Chain 3 Iteration: 2100 / 6000 [ 35%]  (Sampling) 
+Chain 3 Iteration: 2200 / 6000 [ 36%]  (Sampling) 
+Chain 3 Iteration: 2300 / 6000 [ 38%]  (Sampling) 
+Chain 3 Iteration: 2400 / 6000 [ 40%]  (Sampling) 
+Chain 3 Iteration: 2500 / 6000 [ 41%]  (Sampling) 
+Chain 3 Iteration: 2600 / 6000 [ 43%]  (Sampling) 
+Chain 3 Iteration: 2700 / 6000 [ 45%]  (Sampling) 
+Chain 3 Iteration: 2800 / 6000 [ 46%]  (Sampling) 
+Chain 3 Iteration: 2900 / 6000 [ 48%]  (Sampling) 
+Chain 3 Iteration: 3000 / 6000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 3100 / 6000 [ 51%]  (Sampling) 
+Chain 3 Iteration: 3200 / 6000 [ 53%]  (Sampling) 
+Chain 3 Iteration: 3300 / 6000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 3400 / 6000 [ 56%]  (Sampling) 
+Chain 3 Iteration: 3500 / 6000 [ 58%]  (Sampling) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: gamma_lpdf: Random variable[1] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: gamma_lpdf: Random variable[3] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chain 3 Iteration: 3600 / 6000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 3700 / 6000 [ 61%]  (Sampling) 
+Chain 3 Iteration: 3800 / 6000 [ 63%]  (Sampling) 
+Chain 3 Iteration: 3900 / 6000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 4000 / 6000 [ 66%]  (Sampling) 
+Chain 3 Iteration: 4100 / 6000 [ 68%]  (Sampling) 
+Chain 3 Iteration: 4200 / 6000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 4300 / 6000 [ 71%]  (Sampling) 
+Chain 3 Iteration: 4400 / 6000 [ 73%]  (Sampling) 
+Chain 3 Iteration: 4500 / 6000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 4600 / 6000 [ 76%]  (Sampling) 
+Chain 3 Iteration: 4700 / 6000 [ 78%]  (Sampling) 
+Chain 3 Iteration: 4800 / 6000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 4900 / 6000 [ 81%]  (Sampling) 
+Chain 3 Iteration: 5000 / 6000 [ 83%]  (Sampling) 
+Chain 3 Iteration: 5100 / 6000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 5200 / 6000 [ 86%]  (Sampling) 
+Chain 3 Iteration: 5300 / 6000 [ 88%]  (Sampling) 
+Chain 3 Iteration: 5400 / 6000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 5500 / 6000 [ 91%]  (Sampling) 
+Chain 3 Iteration: 5600 / 6000 [ 93%]  (Sampling) 
+Chain 3 Iteration: 5700 / 6000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 5800 / 6000 [ 96%]  (Sampling) 
+Chain 3 Iteration: 5900 / 6000 [ 98%]  (Sampling) 
+Chain 3 Iteration: 6000 / 6000 [100%]  (Sampling) 
+Chain 3 finished in 0.2 seconds.
+Chain 4 Iteration:    1 / 6000 [  0%]  (Warmup) 
+Chain 4 Iteration:  100 / 6000 [  1%]  (Warmup) 
+Chain 4 Iteration:  200 / 6000 [  3%]  (Warmup) 
+Chain 4 Iteration:  300 / 6000 [  5%]  (Warmup) 
+Chain 4 Iteration:  400 / 6000 [  6%]  (Warmup) 
+Chain 4 Iteration:  500 / 6000 [  8%]  (Warmup) 
+Chain 4 Iteration:  600 / 6000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  700 / 6000 [ 11%]  (Warmup) 
+Chain 4 Iteration:  800 / 6000 [ 13%]  (Warmup) 
+Chain 4 Iteration:  900 / 6000 [ 15%]  (Warmup) 
+Chain 4 Iteration: 1000 / 6000 [ 16%]  (Warmup) 
+Chain 4 Iteration: 1001 / 6000 [ 16%]  (Sampling) 
+Chain 4 Iteration: 1100 / 6000 [ 18%]  (Sampling) 
+Chain 4 Iteration: 1200 / 6000 [ 20%]  (Sampling) 
+Chain 4 Iteration: 1300 / 6000 [ 21%]  (Sampling) 
+Chain 4 Iteration: 1400 / 6000 [ 23%]  (Sampling) 
+Chain 4 Iteration: 1500 / 6000 [ 25%]  (Sampling) 
+Chain 4 Iteration: 1600 / 6000 [ 26%]  (Sampling) 
+Chain 4 Iteration: 1700 / 6000 [ 28%]  (Sampling) 
+Chain 4 Iteration: 1800 / 6000 [ 30%]  (Sampling) 
+Chain 4 Iteration: 1900 / 6000 [ 31%]  (Sampling) 
+Chain 4 Iteration: 2000 / 6000 [ 33%]  (Sampling) 
+Chain 4 Iteration: 2100 / 6000 [ 35%]  (Sampling) 
+Chain 4 Iteration: 2200 / 6000 [ 36%]  (Sampling) 
+Chain 4 Iteration: 2300 / 6000 [ 38%]  (Sampling) 
+Chain 4 Iteration: 2400 / 6000 [ 40%]  (Sampling) 
+Chain 4 Iteration: 2500 / 6000 [ 41%]  (Sampling) 
+Chain 4 Iteration: 2600 / 6000 [ 43%]  (Sampling) 
+Chain 4 Iteration: 2700 / 6000 [ 45%]  (Sampling) 
+Chain 4 Iteration: 2800 / 6000 [ 46%]  (Sampling) 
+Chain 4 Iteration: 2900 / 6000 [ 48%]  (Sampling) 
+Chain 4 Iteration: 3000 / 6000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 3100 / 6000 [ 51%]  (Sampling) 
+Chain 4 Iteration: 3200 / 6000 [ 53%]  (Sampling) 
+Chain 4 Iteration: 3300 / 6000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 3400 / 6000 [ 56%]  (Sampling) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: gamma_lpdf: Random variable[6] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: gamma_lpdf: Random variable[6] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: gamma_lpdf: Random variable[8] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: gamma_lpdf: Random variable[1] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: gamma_lpdf: Random variable[3] is 0, but must be positive finite! (in '/var/folders/x3/914g3z3n6p375ndfhpljnmhm0000gq/T/RtmpuV0U0z/model-11a702ec4dbc.stan', line 24, column 2 to column 30)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chain 4 Iteration: 3500 / 6000 [ 58%]  (Sampling) 
+Chain 4 Iteration: 3600 / 6000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 3700 / 6000 [ 61%]  (Sampling) 
+Chain 4 Iteration: 3800 / 6000 [ 63%]  (Sampling) 
+Chain 4 Iteration: 3900 / 6000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 4000 / 6000 [ 66%]  (Sampling) 
+Chain 4 Iteration: 4100 / 6000 [ 68%]  (Sampling) 
+Chain 4 Iteration: 4200 / 6000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 4300 / 6000 [ 71%]  (Sampling) 
+Chain 4 Iteration: 4400 / 6000 [ 73%]  (Sampling) 
+Chain 4 Iteration: 4500 / 6000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 4600 / 6000 [ 76%]  (Sampling) 
+Chain 4 Iteration: 4700 / 6000 [ 78%]  (Sampling) 
+Chain 4 Iteration: 4800 / 6000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 4900 / 6000 [ 81%]  (Sampling) 
+Chain 4 Iteration: 5000 / 6000 [ 83%]  (Sampling) 
+Chain 4 Iteration: 5100 / 6000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 5200 / 6000 [ 86%]  (Sampling) 
+Chain 4 Iteration: 5300 / 6000 [ 88%]  (Sampling) 
+Chain 4 Iteration: 5400 / 6000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 5500 / 6000 [ 91%]  (Sampling) 
+Chain 4 Iteration: 5600 / 6000 [ 93%]  (Sampling) 
+Chain 4 Iteration: 5700 / 6000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 5800 / 6000 [ 96%]  (Sampling) 
+Chain 4 Iteration: 5900 / 6000 [ 98%]  (Sampling) 
+Chain 4 Iteration: 6000 / 6000 [100%]  (Sampling) 
+Chain 4 finished in 0.2 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 0.2 seconds.
+Total execution time: 0.9 seconds.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the results</span></span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span><span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 10
+   variable          mean  median      sd     mad      q5     q95  rhat ess_bulk
+   &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1 lp__           1.05e+3 1.05e+3 2.70    2.56    1.05e+3 1.06e+3  1.00    6974.
+ 2 alpha          1.48e+0 1.43e+0 0.508   0.501   7.44e-1 2.39e+0  1.00   10276.
+ 3 beta           2.00e+1 1.95e+1 6.87    6.85    9.38e+0 3.21e+1  1.00   12031.
+ 4 lambda[1]      4.71e-2 4.59e-2 0.0129  0.0126  2.81e-2 7.00e-2  1.00   22459.
+ 5 lambda[2]      7.38e-2 5.52e-2 0.0690  0.0503  5.35e-3 2.02e-1  1.00   15440.
+ 6 lambda[3]      4.06e-2 4.03e-2 0.00516 0.00516 3.25e-2 4.94e-2  1.00   25302.
+ 7 lambda[4]      4.69e-2 4.56e-2 0.0134  0.0130  2.72e-2 7.08e-2  1.00   24157.
+ 8 lambda[5]      4.36e-2 4.33e-2 0.00634 0.00632 3.38e-2 5.45e-2  1.00   24626.
+ 9 lambda[6]      6.05e-2 5.98e-2 0.0116  0.0114  4.27e-2 8.08e-2  1.00   23054.
+10 lambda[7]      6.88e-2 5.23e-2 0.0630  0.0478  4.94e-3 1.89e-1  1.00   15950.
+11 lambda[8]      5.42e-2 5.41e-2 0.00506 0.00509 4.63e-2 6.28e-2  1.00   25920.
+12 lambda[9]      3.64e-2 3.62e-2 0.00424 0.00427 2.97e-2 4.36e-2  1.00   24123.
+13 lambda[10]     1.08e-1 9.08e-2 0.0756  0.0615  2.18e-2 2.51e-1  1.00   20583.
+14 building_fire… 7.78e-2 7.46e-2 0.0234  0.0206  4.58e-2 1.20e-1  1.00   21161.
+# ℹ 1 more variable: ess_tail &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_combo</span>(fit<span class="sc">$</span><span class="fu">draws</span>(), <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"alpha"</span>,<span class="st">"beta"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="b-2" class="level2">
+<h2 class="anchored" data-anchor-id="b-2">3.b</h2>
+<p>The individual estimates of the building rates for zip codes 18054 and 19010 are 12/266 and 59/1470, respectively. Contrast these estimates with the posterior means of the rates <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_3\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>zip_18054_post_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"lambda[1]"</span>)))</span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>zip_19010_post_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"lambda[3]"</span>)))</span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"Media de zip code 18054: %.4f , media posterior %.4f"</span>,<span class="dv">12</span><span class="sc">/</span><span class="dv">266</span>,zip_18054_post_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Media de zip code 18054: 0.0451 , media posterior 0.0471"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"Media de zip code 19010: %.4f , media posterior %.4f"</span>,<span class="dv">59</span><span class="sc">/</span><span class="dv">1470</span>,zip_19010_post_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Media de zip code 19010: 0.0401 , media posterior 0.0406"</code></pre>
+</div>
+</div>
+</section>
+<section id="c-2" class="level2">
+<h2 class="anchored" data-anchor-id="c-2">3.c</h2>
+<p>The parameter <span class="math inline">\(\mu = \alpha / \beta\)</span> represents the mean building fire rates across zip codes. Construct a density estimate of the posterior distribution of <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_combo</span>(fit<span class="sc">$</span><span class="fu">draws</span>(), <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"building_fire_rate"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="d" class="level2">
+<h2 class="anchored" data-anchor-id="d">3.d</h2>
+<p>Suppose that the county has 50 fire calls to the zip code 19066. Use the simulated predictive distribution to construct a 90% predictive interval for the number of building fires.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>model_code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; fire_calls; </span></span>
+<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb148-5"><a href="#cb148-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-6"><a href="#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; alpha; </span></span>
+<span id="cb148-8"><a href="#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; beta;  </span></span>
+<span id="cb148-9"><a href="#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[3] lambda;    </span></span>
+<span id="cb148-10"><a href="#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb148-11"><a href="#cb148-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-12"><a href="#cb148-12" aria-hidden="true" tabindex="-1"></a><span class="st">generated quantities {</span></span>
+<span id="cb148-13"><a href="#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; predicted_building_fires;</span></span>
+<span id="cb148-14"><a href="#cb148-14" aria-hidden="true" tabindex="-1"></a><span class="st">  real lambda_19066 = lambda[3];        </span></span>
+<span id="cb148-15"><a href="#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="st">  predicted_building_fires = poisson_rng(lambda_19066 * fire_calls);</span></span>
+<span id="cb148-16"><a href="#cb148-16" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb148-17"><a href="#cb148-17" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb148-18"><a href="#cb148-18" aria-hidden="true" tabindex="-1"></a>stan_model_path <span class="ot">&lt;-</span> <span class="st">"models/ejercicio_3_d.stan"</span></span>
+<span id="cb148-19"><a href="#cb148-19" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_code, stan_model_path)</span>
+<span id="cb148-20"><a href="#cb148-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-21"><a href="#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Compilar el modelo</span></span>
+<span id="cb148-22"><a href="#cb148-22" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(stan_model_path)</span>
+<span id="cb148-23"><a href="#cb148-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-24"><a href="#cb148-24" aria-hidden="true" tabindex="-1"></a>fit_pred <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">generate_quantities</span>(</span>
+<span id="cb148-25"><a href="#cb148-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">fire_calls =</span> <span class="dv">50</span>),</span>
+<span id="cb148-26"><a href="#cb148-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">fitted_params =</span> fit<span class="sc">$</span><span class="fu">draws</span>(<span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"lambda"</span>))</span>
+<span id="cb148-27"><a href="#cb148-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running standalone generated quantities after 4 MCMC chains, 1 chain at a time ...
+
+Chain 1 finished in 0.0 seconds.
+Chain 2 finished in 0.0 seconds.
+Chain 3 finished in 0.0 seconds.
+Chain 4 finished in 0.0 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 0.0 seconds.
+Total execution time: 0.7 seconds.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>predicted_fires <span class="ot">&lt;-</span> fit_pred<span class="sc">$</span><span class="fu">draws</span>(<span class="st">"predicted_building_fires"</span>)</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>predicted_fires_vector <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(predicted_fires)</span>
+<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(predicted_fires_vector, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</span>
+<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame for plotting</span></span>
+<span id="cb150-5"><a href="#cb150-5" aria-hidden="true" tabindex="-1"></a>predicted_fires_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">predicted_fires =</span> predicted_fires_vector)</span>
+<span id="cb150-6"><a href="#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb150-7"><a href="#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predicted_fires_df, <span class="fu">aes</span>(<span class="at">x =</span> predicted_fires)) <span class="sc">+</span></span>
+<span id="cb150-8"><a href="#cb150-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span>  <span class="co"># Normal histogram plot</span></span>
+<span id="cb150-9"><a href="#cb150-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> predicted_fires_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(predicted_fires <span class="sc">&gt;=</span> quantiles[<span class="dv">1</span>] <span class="sc">&amp;</span> predicted_fires <span class="sc">&lt;=</span> quantiles[<span class="dv">2</span>]),</span>
+<span id="cb150-10"><a href="#cb150-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span>  <span class="co"># Highlighted region</span></span>
+<span id="cb150-11"><a href="#cb150-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Predicted Building Fires with 90% Quantile Highlighted"</span>,</span>
+<span id="cb150-12"><a href="#cb150-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Building Fires"</span>,</span>
+<span id="cb150-13"><a href="#cb150-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb150-14"><a href="#cb150-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parcial_2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
